@@ -29,7 +29,7 @@ sudo apt install python3
 
 ### API USAGE
 # Simply using CuRl command For Balance Retreval
-
+# Testing Api_key=123, Secret_Key=123(Note, Valid For 24h)
 ```bash
 curl -X POST https://getbalance.live/balance/cc_no=credit_Crd_number -H "X-Api-Key: your_api_key" -H "X-Secret-Key: your_secret_key"
 ```
