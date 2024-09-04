@@ -22,3 +22,7 @@ Ensure you have these dependencies installed. You can install the required packa
 
 ```bash
 pip install Flask requests
+```
+```bash
+sudo apt install python3
+```
