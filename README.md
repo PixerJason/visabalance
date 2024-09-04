@@ -590,3 +590,6 @@ curl_close($ch);
   "error": "Invalid cc_no. It must be a 16-digit integer."
 }
 ```
+## Credits
+
+All the credit goes to [PixerJason](https://github.com/PixerJason).
