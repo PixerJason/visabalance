@@ -58,3 +58,70 @@ curl -X POST https://getbalance.live/balance/cc_no=credit_Crd_number -H "X-Api-K
   "error": "Unauthorized access idiot!"
 }
 ```
+- 400 Bad Request (Invalid cc_no):
+```json
+{
+  "error": "Invalid cc_no. It must be a 16-digit integer."
+}
+```
+
+### Using Python Requests
+
+```python
+import requests
+
+# Replace with your actual values
+url = 'https://getbalance.live/balance/cc_no=credit_card_number'
+api_key = 'your_api_key'
+secret_key = 'your_secret_key'
+
+# Define headers
+headers = {
+    'X-Api-Key': api_key,
+    'X-Secret-Key': secret_key
+}
+
+# Send POST request
+try:
+    response = requests.post(url, headers=headers)
+    
+    # Raise an exception if the request was unsuccessful
+    response.raise_for_status()
+    
+    # Print the response from the server
+    print("Response Status Code:", response.status_code)
+    print("Response JSON:", response.json())
+except requests.exceptions.RequestException as e:
+    print("An error occurred:", e)
+```
+
+# Success Response:
+```json
+{
+  "active": true,
+  "balance": {
+    "401179600635460": "25,317.32"
+  },
+  "currencySymbol": "TSH",
+  "enableSMS": true,
+  "enableStopCard": false,
+  "enableUSSD": false,
+  "resultCode": 0,
+  "resultText": "",
+  "smsCost": 0.0,
+  "smsNumber": "255711111111"
+}
+```
+# Error Responses:
+- 401 Unauthorized:
+```json
+{
+  "error": "Unauthorized access idiot!"
+}
+```
+- 400 Bad Request (Invalid cc_no):
+```json
+{
+  "error": "Invalid cc_no. It must be a 16-digit integer."
+}
+```
