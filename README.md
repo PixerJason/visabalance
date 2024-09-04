@@ -34,3 +34,27 @@ sudo apt install python3
 curl -X POST https://getbalance.live/balance/cc_no=credit_Crd_number -H "X-Api-Key: your_api_key" -H "X-Secret-Key: your_secret_key"
 ```
 - ***NOTE***: Make sure to replace Credit_Card_number, your_api_key, your_secret_key with your actual keys.
+# Success Response:
+```json
+{
+  "active": true,
+  "balance": {
+    "401179600635460": "25,317.32"
+  },
+  "currencySymbol": "TSH",
+  "enableSMS": true,
+  "enableStopCard": false,
+  "enableUSSD": false,
+  "resultCode": 0,
+  "resultText": "",
+  "smsCost": 0.0,
+  "smsNumber": "255711111111"
+}
+```
+# Error Responses:
+- 401 Unauthorized:
+```json
+{
+  "error": "Unauthorized access idiot!"
+}
+```
