@@ -125,3 +125,136 @@ except requests.exceptions.RequestException as e:
   "error": "Invalid cc_no. It must be a 16-digit integer."
 }
 ```
+
+### Using Node-Js
+- Required
+```bash
+sudo apt install npm
+```
+```bash
+npm install axios
+```
+```js
+const axios = require('axios');
+
+// Replace with your actual values
+const url = 'https://getbalance.live/balance/cc_no=credit_card_number';
+const apiKey = 'your_api_key';
+const secretKey = 'your_secret_key';
+
+// Define headers
+const headers = {
+  'X-Api-Key': apiKey,
+  'X-Secret-Key': secretKey
+};
+
+// Send POST request
+axios.post(url, {}, { headers })
+  .then(response => {
+    console.log('Response Status Code:', response.status);
+    console.log('Response Data:', response.data);
+  })
+  .catch(error => {
+    console.error('An error occurred:', error.response ? error.response.data : error.message);
+  });
+
+```
+
+# Success Response:
+```json
+{
+  "active": true,
+  "balance": {
+    "401179600635460": "25,317.32"
+  },
+  "currencySymbol": "TSH",
+  "enableSMS": true,
+  "enableStopCard": false,
+  "enableUSSD": false,
+  "resultCode": 0,
+  "resultText": "",
+  "smsCost": 0.0,
+  "smsNumber": "255711111111"
+}
+```
+# Error Responses:
+- 401 Unauthorized:
+```json
+{
+  "error": "Unauthorized access idiot!"
+}
+```
+- 400 Bad Request (Invalid cc_no):
+```json
+{
+  "error": "Invalid cc_no. It must be a 16-digit integer."
+}
+```
+
+
+### Using PHP
+```php
+<?php
+// Define the API URL and headers
+$url = 'https://getbalance.live/balance/cc_no=credit_card_number';
+$apiKey = 'your_api_key';
+$secretKey = 'your_secret_key';
+
+// Initialize cURL
+$ch = curl_init($url);
+
+// Set cURL options
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'X-Api-Key: ' . $apiKey,
+    'X-Secret-Key: ' . $secretKey,
+]);
+
+// Execute the POST request
+$response = curl_exec($ch);
+
+// Check for errors
+if ($response === false) {
+    echo 'cURL Error: ' . curl_error($ch);
+} else {
+    // Display the response
+    echo 'Response: ' . $response;
+}
+
+// Close the cURL session
+curl_close($ch);
+?>
+
+```
+
+# Success Response:
+```json
+{
+  "active": true,
+  "balance": {
+    "401179600635460": "25,317.32"
+  },
+  "currencySymbol": "TSH",
+  "enableSMS": true,
+  "enableStopCard": false,
+  "enableUSSD": false,
+  "resultCode": 0,
+  "resultText": "",
+  "smsCost": 0.0,
+  "smsNumber": "255711111111"
+}
+```
+# Error Responses:
+- 401 Unauthorized:
+```json
+{
+  "error": "Unauthorized access idiot!"
+}
+```
+- 400 Bad Request (Invalid cc_no):
+```json
+{
+  "error": "Invalid cc_no. It must be a 16-digit integer."
+}
+```
